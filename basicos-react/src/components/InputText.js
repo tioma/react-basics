@@ -6,8 +6,8 @@ class InputText extends Component {
         { value: '' }
        ]
   
-    handleChange = (props) => {
-        this.setState({value: props.target.value});
+    handleChange = (e) => {
+        this.setState({value: e.target.value});
 
     }
     render() {
