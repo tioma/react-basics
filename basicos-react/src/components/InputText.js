@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import PrintValues from './PrintValues';
 import CustomInput from './CustomInput';
 
-
 class InputText extends Component {
   constructor() {
     super();
@@ -25,10 +24,7 @@ class InputText extends Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    console.log(name);
-    console.log(value);
     this.setState({ [name]: value });
-    console.log(this.state);
   }
 
   deleteInput(valor) {
