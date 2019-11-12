@@ -3,9 +3,13 @@ import React, { Component } from 'react';
 import PrintValues from './PrintValues';
 import CustomInput from './CustomInput';
 
+import CountryContext from '../Context';
+
 class InputText extends Component {
-  constructor() {
-    super();
+  constructor(props, context) {
+    console.log(context);
+    console.log(props);
+    super(props, context);
 
     this.state = {};
 
@@ -35,6 +39,7 @@ class InputText extends Component {
     const {
       value3, value4,
     } = this.state;
+    const { country, languaje } = this.context;
     return (
       <form>
         <div className="columns">
@@ -53,6 +58,8 @@ class InputText extends Component {
             <CustomInput value={value4} handleChange={this.handleChange} />
           </div>
         </div>
+        <h1>{`Estamos en ${country}`}</h1>
+        <h2>{`El lenguaje es ${languaje}`}</h2>
         <PrintValues {...this.state} />
         <div className="column">
           <div className="column is-4">
@@ -70,5 +77,7 @@ class InputText extends Component {
     );
   }
 }
+
+InputText.contextType = CountryContext;
 
 export default InputText;
