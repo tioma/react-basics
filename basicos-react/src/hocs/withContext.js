@@ -1,10 +1,13 @@
+/* eslint-disable react/prefer-stateless-function */
 import React from 'react';
+
 import CountryContext from '../Context';
 
-const withContext = (Base) => {
+const withCountryContext = (Base) => {
   class Wrapper extends React.Component {
     render() {
-      return <Base {...this.props} country={this.context.country} />;
+      const { country } = this.context;
+      return (<Base {...this.props} country={country} />);
     }
   }
 
@@ -13,4 +16,4 @@ const withContext = (Base) => {
   return Wrapper;
 };
 
-export default withContext;
+export default withCountryContext;
