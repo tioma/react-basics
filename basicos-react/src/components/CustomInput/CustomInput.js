@@ -1,8 +1,10 @@
 import React from 'react';
 
-import onlyNumbers from '../hocs/onlyNumbers';
+import onlyNumbers from '../../hocs/onlyNumbers';
 
-const CustomInput = ({ name, value, handleChange, onKeyDown }) => (
+const CustomInput = ({
+  name, value, handleChange, onKeyDown,
+}) => (
   <div className="field">
     <label className="label">Valor 1</label>
     <p className="control">

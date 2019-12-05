@@ -1,6 +1,6 @@
 import React from 'react';
 import LogoComponent from './components/LogoComponent';
-import InputText from './components/InputText';
+import InputTextContainer from './components/InputText/container';
 
 import CountryContext from './Context';
 
@@ -18,7 +18,7 @@ function App() {
         <header className="App-header">
           <LogoComponent />
         </header>
-        <InputText />
+        <InputTextContainer />
       </div>
     </CountryContext.Provider>
   );

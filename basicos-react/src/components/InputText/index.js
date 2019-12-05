@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
-import PrintValues from './PrintValues';
-import CustomInput from './CustomInput';
+import PrintValues from '../PrintValues';
+import CustomInput from '../CustomInput/CustomInput';
 
-import CountryContext from '../Context';
+import CountryContext from '../../Context';
 
 class InputText extends Component {
   constructor(props, context) {
@@ -24,6 +24,11 @@ class InputText extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.deleteFirstInput = this.deleteInput.bind(this, 'value');
     this.deleteSecondInput = this.deleteInput.bind(this, 'value2');
+    this.printMessage = this.printMessage.bind(this);
+  }
+
+  componentDidMount() {
+    setTimeout(() => { this.props.setCountry('cualquier cosa'); }, 6000);
   }
 
   handleChange(event) {
@@ -35,11 +40,16 @@ class InputText extends Component {
     this.setState({ [valor]: '' });
   }
 
+  printMessage() {
+    const { languaje } = this.context;
+    alert(languaje);
+  }
+
   render() {
     const {
       value3, value4,
     } = this.state;
-    const { country, languaje } = this.context;
+    const { country, languaje } = this.props;
     return (
       <form>
         <div className="columns">
@@ -60,7 +70,7 @@ class InputText extends Component {
         </div>
         <h1>{`Estamos en ${country}`}</h1>
         <h2>{`El lenguaje es ${languaje}`}</h2>
-        <PrintValues {...this.state} />
+        <PrintValues {...this.state} printMessage={this.printMessage} />
         <div className="column">
           <div className="column is-4">
             <div className="field is-grouped">
