@@ -37,6 +37,8 @@ class InputText extends Component {
   }
 
   deleteInput(valor) {
+    console.log('delete input called');
+    console.log(valor);
     this.setState({ [valor]: '' });
   }
 

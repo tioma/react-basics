@@ -7,8 +7,7 @@ const onlyNumbers = (BaseComponent) => {
 
       this.state = {
         key: '',
-      }
-
+      };
 
       this.validateNumbers = this.validateNumbers.bind(this);
     }
@@ -22,18 +21,18 @@ const onlyNumbers = (BaseComponent) => {
 
       console.log(this.state);
 
-      if(!isNumber && !isDelete) {
+      if (!isNumber && !isDelete) {
         event.stopPropagation();
         event.preventDefault();
       }
     }
 
     render() {
-      return (<BaseComponent {...this.props} onKeyDown={this.validateNumbers} />)
+      return (<BaseComponent {...this.props} onKeyDown={this.validateNumbers} />);
     }
   }
 
   return Wrapper;
-}
+};
 
 export default onlyNumbers;
