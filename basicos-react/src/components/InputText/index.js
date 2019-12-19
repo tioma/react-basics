@@ -21,6 +21,9 @@ class InputText extends Component {
       value: this.state.value2,
     }];
 
+    console.log(props.hotelsData);
+    console.log(props.fetching);
+
     this.handleChange = this.handleChange.bind(this);
     this.deleteFirstInput = this.deleteInput.bind(this, 'value');
     this.deleteSecondInput = this.deleteInput.bind(this, 'value2');
@@ -28,7 +31,11 @@ class InputText extends Component {
   }
 
   componentDidMount() {
-    setTimeout(() => { this.props.setCountry('cualquier cosa'); }, 6000);
+    const {
+      getHotelsData,
+    } = this.props;
+    // setTimeout(() => { setCountry('cualquier cosa'); }, 6000);
+    return getHotelsData();
   }
 
   handleChange(event) {
@@ -51,7 +58,12 @@ class InputText extends Component {
     const {
       value3, value4,
     } = this.state;
-    const { country, languaje } = this.props;
+    const {
+      country, languaje, hotelsData, fetching,
+    } = this.props;
+    console.log('en el render');
+    console.log(hotelsData);
+    console.log(fetching);
     return (
       <form>
         <div className="columns">

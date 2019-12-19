@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 
 import { actions as userInputActions } from '../../ducks/UserInput';
 import { actions as contextActions } from '../../ducks/Context';
+import { actions as hotelsActioons } from '../../ducks/Hotels';
 
 import InputText from '.';
 
@@ -10,6 +11,7 @@ const {
   setValue, setValue2, setValue3, setValue4,
 } = userInputActions;
 const { setCountry } = contextActions;
+const { getHotelsData } = hotelsActioons;
 
 const InputTextContainer = (props) => (
   <InputText
@@ -24,6 +26,10 @@ const InputTextContainer = (props) => (
     setValue3={props.setValue3}
     setValue4={props.setValue4}
     setCountry={props.setCountry}
+    getHotelsData={props.getHotelsData}
+    hotelsData={props.hotelsData}
+    fetching={props.fetching}
+    requestStatus={props.requestStatus}
   />
 );
 
@@ -37,6 +43,9 @@ const mapStateToProps = (state) => {
     value4: state.userInput.value4,
     country: state.context.country,
     languaje: state.context.languaje,
+    hotelsData: state.hotels.data,
+    fetching: state.hotels.fetching,
+    requestStatus: state.hotels.requestStatus,
   });
 };
 
@@ -48,5 +57,6 @@ export default connect(
     setValue3,
     setValue4,
     setCountry,
+    getHotelsData,
   },
 )(InputTextContainer);
