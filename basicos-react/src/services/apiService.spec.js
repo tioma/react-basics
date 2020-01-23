@@ -13,16 +13,18 @@ describe('ApiService', () => {
         .then((response) => {
           expect(response).toMatchObject(mockSuccessResponse);
           expect(fetchMock).toBeCalledWith('https://wt-8a099f3e7c73b2d17f4e018b6cfd6131-0.sandbox.auth0-extend.com/acamica');
+          fetchMock.mockClear();
         });
     });
 
     it('return err on failure response', () => {
       const mockFailureResponse = { message: 'an error has occured' };
       const mockFetchResponse = Promise.reject(mockFailureResponse);
-      jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchResponse);
+      const fetchMock = jest.spyOn(global, 'fetch').mockImplementation(() => mockFetchResponse);
       return ApiService.getData()
         .catch((err) => {
           expect(err).toMatchObject(mockFailureResponse);
+          fetchMock.mockClear();
         });
     });
   });

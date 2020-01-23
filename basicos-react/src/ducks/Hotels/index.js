@@ -17,13 +17,12 @@ const actions = {
     dispatch({ type: types.HOTELS_FETCHING });
     return ApiService.getData()
       .then((response) => {
-        console.log('en el action');
-        console.log(response);
         dispatch({ type: types.HOTELS_FETCH_SUCCESS, payload: response });
         return response;
       })
-      .catch(() => {
-        dispatch({ types: types.HOTELS_FETCH_FAILURE });
+      .catch((err) => {
+        dispatch({ type: types.HOTELS_FETCH_FAILURE });
+        return err;
       });
   },
 };
