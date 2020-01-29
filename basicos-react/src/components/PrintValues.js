@@ -1,6 +1,6 @@
 import React from 'react';
 
-import withCountryContext from '../hocs/withContext';
+const OtroComponentcustom = () => <p>Hola</p>;
 
 const PrintValues = ({
   value, value2, country, printMessage,
@@ -11,7 +11,8 @@ const PrintValues = ({
 
     <h3>{`el country es ${country}`}</h3>
     <button type="button" onClick={printMessage}>Mostrar mensaje</button>
+    <OtroComponentcustom />
   </>
 );
 
-export default withCountryContext(PrintValues);
+export default PrintValues;

@@ -8,6 +8,7 @@ const setup = (overrideProps) => {
     country: 'AR',
     languaje: 'ES',
     setCountry: () => true,
+    getHotelsData: () => true,
     ...overrideProps,
   };
 

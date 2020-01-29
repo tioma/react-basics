@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 
+import withCountryContext from '../../hocs/withContext';
+
 import PrintValues from '../PrintValues';
 import CustomInput from '../CustomInput/CustomInput';
 
 import CountryContext from '../../Context';
+
+const WrappedPrintValues = withCountryContext(PrintValues);
 
 class InputText extends Component {
   constructor(props, context) {
@@ -84,7 +88,7 @@ class InputText extends Component {
         </div>
         <h1>{`Estamos en ${country}`}</h1>
         <h2>{`El lenguaje es ${languaje}`}</h2>
-        <PrintValues {...this.state} printMessage={this.printMessage} />
+        <WrappedPrintValues {...this.state} printMessage={this.printMessage} />
         <div className="column">
           <div className="column is-4">
             <div className="field is-grouped">
